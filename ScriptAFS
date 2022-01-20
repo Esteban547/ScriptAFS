@@ -1,0 +1,26 @@
+if game.PlaceId == 6299805723 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Anime Fighters Simulator", "GrapeTheme")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+    MainSection:NewToggle("Autoclicker", "Makes your player autoclick", function(v)
+        getgenv().autoclick = v
+        while true do
+            if not getgenv().autoclick then return end
+            local Event = game:GetService("Players").LocalPlayer.ClickerDamage
+            Event:FireServer()
+            wait(0.25)
+    end)
+
+    -- PLAYER
+    local Player = Window:NewTab("PLayer")
+    local PlayerSection = Player:NewSection("Player")
+    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 150, 16, function(v) -- 500 (MaxValue) | 0 (MinValue)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+     PlayerSection:NewSlider("JumpPower", "Changes the JumpPower", 150, 50, function(v) -- 500 (MaxValue) | 0 (MinValue)
+         game.Players.LocalPlayer.Character.Humanoid.JumpPower = v   
+    end)
+end
