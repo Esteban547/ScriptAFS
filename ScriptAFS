@@ -12,6 +12,7 @@ if game.PlaceId == 6299805723 then
             local Event = game:GetService("Players").LocalPlayer.ClickerDamage
             Event:FireServer()
             wait(0.25)
+            end
     end)
 
     -- PLAYER
